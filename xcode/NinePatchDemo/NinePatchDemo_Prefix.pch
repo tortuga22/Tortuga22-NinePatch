@@ -1,0 +1,101 @@
+//
+// Prefix header for all source files of the 'NinePatchDemo' target in the 'NinePatchDemo' project
+//
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#endif
+
+#define DEBUG
+#define NP_ASSERTION_CHECKING
+//#define IMAGEDEBUG
+
+// DLog is almost a drop-in replacement for NSLog  
+// DLog();  
+// DLog(@"here");  
+// DLog(@"value: %d", x);  
+// Unfortunately this doesn't work DLog(aStringVariable); you have to do this instead DLog(@"%@", aStringVariable);  
+#ifdef DEBUG  
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);  
+#else  
+#define DLog(...)  
+#endif  
+
+// ALog always displays output regardless of the DEBUG setting  
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);  
+
+#define LLog(STR) DLog(@"%@",STR)
+
+#define NPLogException(E) DLog(@"Caught '%@' < '%@', '%@' >.",[E name],[E reason],[E userInfo])
+#define NPLogError(E) DLog(@"Error: '%@', '%@', '%@'.",[E localizedDescription],[E localizedFailureReason],[E localizedRecoveryOptions]);
+
+#ifdef NP_ASSERTION_CHECKING
+#define NPParameterAssert(COND) NSParameterAssert(COND)
+#define NPCParameterAssert(COND) NSCParameterAssert(COND)
+#define NPAssert(COND,DESC) NSAssert(COND,DESC)
+#define NPCAssert(COND,DESC) NSCAssert(COND,DESC)
+#else
+#define NPParameterAssert(...) 
+#define NPCParameterAssert(...) 
+#define NPAssert(...) 
+#define NPCAssert(...) 
+#endif
+
+#define STRINGIFY2( x) #x
+#define STRINGIFY(x) STRINGIFY2(x)
+#define PASTE2( a, b) a##b
+#define PASTE( a, b) PASTE2( a, b)
+#define PASSTHROUGH(X) X
+
+#define NPOBJCStringOfToken(TOKEN) PASSTHROUGH(PASTE( PASSTHROUGH(@), PASSTHROUGH(STRINGIFY(TOKEN))))
+
+#define NPSelfProperty(PROP) (self.PROP)
+//#define NPSelfProperty(PROP) ([self PROP])
+
+#define NPAssertPropertyNonNil(PROP) NPAssert((NPSelfProperty(PROP) != nil), ([NSString stringWithFormat:@"self.%s should never be nil.",( (#PROP) )]))
+
+#define NPParameterAssertNotNilConformsToProtocol(OBJ,PROT) NPParameterAssert((OBJ != nil) && ([OBJ conformsToProtocol:@protocol(PROT)]))
+#define NPParameterAssertNotNilIsKindOfClass(OBJ,CLASS) NPParameterAssert((OBJ != nil) && ([OBJ isKindOfClass:CLASS]))
+
+#define NPAssertNilOrConformsToProtocol(OBJ,PROT) NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ conformsToProtocol:@protocol(PROT)])),([NSString stringWithFormat:@"Variable %s must either be nil or conform to %s protocol.", ( (#OBJ) ), ( (#PROT) )]))
+#define NPAssertNilOrIsKindOfClass(OBJ,CLASS) NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ isKindOfClass:[CLASS class]])), ([NSString stringWithFormat:@"Variable %s must either be nil or be kind of %s class.", (#OBJ), (#CLASS)]))
+
+#define NPAssertWithinEpsilon(EPSILON,X,Y) NPAssert( (((X-Y) > (-1.0f * EPSILON)) || ((X-Y) < EPSILON)),([NSString stringWithFormat:@"Should have (%s,%s) within %f but instead (%f,%f).",#X,#Y,EPSILON,X,Y]))
+#define NPAssertWithinOne(X,Y) NPAssertWithinEpsilon(1.0f,X,Y)
+
+#define NPAssertThreeSubSizesSumCorrectlyOnOneAxis(AXIS,MASTERSIZE,SIZE_ONE,SIZE_TWO,SIZE_THREE) NPAssertWithinOne(MASTERSIZE.AXIS,( SIZE_ONE.AXIS + SIZE_TWO.AXIS + SIZE_THREE.AXIS ))
+#define NPAssertCorrectSubsizeWidthDecomposition(MASTER,SIZE_ONE,SIZE_TWO,SIZE_THREE) NPAssertThreeSubSizesSumCorrectlyOnOneAxis(width, MASTER, SIZE_ONE, SIZE_TWO, SIZE_THREE)
+#define NPAssertCorrectSubsizeHeightDecomposition(MASTER,SIZE_ONE,SIZE_TWO,SIZE_THREE) NPAssertThreeSubSizesSumCorrectlyOnOneAxis(height, MASTER, SIZE_ONE, SIZE_TWO, SIZE_THREE)
+
+#define NPAssertCorrectSubimageWidthDecomposition(MASTER,IMAGE_ONE,IMAGE_TWO,IMAGE_THREE) NPAssertCorrectSubsizeWidthDecomposition([MASTER size],[IMAGE_ONE size],[IMAGE_TWO size],[IMAGE_THREE size])
+#define NPAssertCorrectSubimageHeightDecomposition(MASTER,IMAGE_ONE,IMAGE_TWO,IMAGE_THREE) NPAssertCorrectSubsizeWidthDecomposition([MASTER size],[IMAGE_ONE size],[IMAGE_TWO size],[IMAGE_THREE size])
+
+//#define NPAssertNilOrConformsToProtocol(OBJ,PROT) (NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ conformsToProtocol:@protocol(PROT)])),([NSString stringWithFormat:@"Variable %@ must either be nil or conform to %@ protocol.", ( NPOBJCStringOfToken(OBJ) ), ( NPOBJCStringOfToken(PROT) )])))
+//#define NPAssertNilOrIsKindOfClass(OBJ,CLASS) (NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ isKindOfClass:CLASS])), ([NSString stringWithFormat:@"Variable %@ must either be nil or be kind of %@ class.", PASSTHROUGH( NPOBJCStringOfToken(PASSTHROUGH(OBJ)) ), PASSTHROUGH( NPOBJCStringOfToken(PASSTHROUGH(CLASS)) )])))
+
+//#define NPAssertNilOrConformsToProtocol(OBJ,PROT) (NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ conformsToProtocol:@protocol(PROT)])),([NSString stringWithFormat:@"Variable %@ must either be nil or conform to %@ protocol.", ( @###OBJ ), ( @###PROT )])))
+//#define NPAssertNilOrIsKindOfClass(OBJ,CLASS) (NPAssert(((OBJ == nil) || ((OBJ != nil) && [OBJ isKindOfClass:CLASS])), ([NSString stringWithFormat:@"Variable %@ must either be nil or be kind of %@ class.", ( @###OBJ ), ( @###CLASS )])))
+
+#ifdef IMAGEDEBUG
+#define IMLog(IMAGE, IMAGENAME) TUImageLog(IMAGE,[[NSString stringWithFormat:@"debugImage.%.0f.%u.",[NSDate timeIntervalSinceReferenceDate],((NSUInteger) rand())] stringByAppendingString:( IMAGENAME )])
+#else
+#define IMLog(IMAGE, IMAGENAME) 
+#endif
+
+#define TUTruncateBelow(VALUE, FLOOR) ((( VALUE ) < ( FLOOR ))?(( FLOOR )):(( VALUE )))
+#define TUTruncateAbove(VALUE, CEILING) ((( VALUE ) > ( CEILING ))?(( CEILING )):(( VALUE )))
+#define TUTruncateWithin(VALUE, FLOOR, CEILING) ((( VALUE ) < ( FLOOR ))?(( FLOOR )):((( VALUE ) > ( CEILING ))?(( CEILING )):(( VALUE ))))
+#define TUTruncateAtZero(VALUE) TUTruncateBelow(VALUE, 0.0f)
+
+#define TUYesOrNoString(ABOOL) ((( ABOOL ))?(@"YES"):(@"NO"))
