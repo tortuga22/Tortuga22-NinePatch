@@ -9,6 +9,13 @@
 #import "TUCachingNinePatch.h"
 #import "TUNinePatch.h"
 
+@interface TUNinePatchCache ()
+
+@property(nonatomic, retain, readwrite) NSMutableDictionary *ninePatchCache;
+
+@end
+
+
 @implementation TUNinePatchCache
 
 #pragma mark Synthesized Properties

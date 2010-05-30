@@ -16,6 +16,7 @@
 		325B80EF11B001C300B86EA1 /* TUDebugLoggingAssistant.h in Headers */ = {isa = PBXBuildFile; fileRef = 325B80ED11B001C300B86EA1 /* TUDebugLoggingAssistant.h */; };
 		325B80F011B001C300B86EA1 /* TUDebugLoggingAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 325B80EE11B001C300B86EA1 /* TUDebugLoggingAssistant.m */; };
 		325B80F811B00C9800B86EA1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 325B80F711B00C9800B86EA1 /* CoreFoundation.framework */; };
+		325B821F11B317E400B86EA1 /* NinePatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 325B821E11B317E400B86EA1 /* NinePatch.h */; };
 		32BBFEFF10E95B5700F57FBC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BBFEFE10E95B5700F57FBC /* CoreGraphics.framework */; };
 		32BBFF0610E95B6E00F57FBC /* TUNinePatchProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BBFF0510E95B6E00F57FBC /* TUNinePatchProtocols.h */; };
 		32BBFF2710E95BCF00F57FBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BBFF2610E95BCF00F57FBC /* UIKit.framework */; };
@@ -43,6 +44,7 @@
 		325B80ED11B001C300B86EA1 /* TUDebugLoggingAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUDebugLoggingAssistant.h; sourceTree = "<group>"; };
 		325B80EE11B001C300B86EA1 /* TUDebugLoggingAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUDebugLoggingAssistant.m; sourceTree = "<group>"; };
 		325B80F711B00C9800B86EA1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		325B821E11B317E400B86EA1 /* NinePatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NinePatch.h; sourceTree = "<group>"; };
 		32BBFEFE10E95B5700F57FBC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32BBFF0510E95B6E00F57FBC /* TUNinePatchProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUNinePatchProtocols.h; sourceTree = "<group>"; };
 		32BBFF2610E95BCF00F57FBC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -93,6 +95,7 @@
 				034768DFFF38A50411DB9C8B /* Products */,
 				32BBFF2610E95BCF00F57FBC /* UIKit.framework */,
 				325B80F711B00C9800B86EA1 /* CoreFoundation.framework */,
+				325B821E11B317E400B86EA1 /* NinePatch.h */,
 			);
 			name = NinePatch;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				324A2930111CC2CB00CC0BF0 /* TUCachingNinePatch.h in Headers */,
 				324A2940111CE12C00CC0BF0 /* TUNinePatchCache.h in Headers */,
 				325B80EF11B001C300B86EA1 /* TUDebugLoggingAssistant.h in Headers */,
+				325B821F11B317E400B86EA1 /* NinePatch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

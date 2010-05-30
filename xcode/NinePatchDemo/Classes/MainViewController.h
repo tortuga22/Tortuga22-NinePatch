@@ -43,6 +43,8 @@
 	
 	TUNinePatch *_activeNinePatch;
 	UIImage *_activeBaseImage;
+	
+	BOOL _usingNGramBackplate;
 }
 
 // Synthesized Properties
@@ -76,6 +78,8 @@
 
 @property(nonatomic, retain) TUNinePatch *activeNinePatch;
 @property(nonatomic, retain) UIImage *activeBaseImage;
+
+@property(nonatomic, assign) BOOL usingNGramBackplate; 
 
 // Status Updating
 -(void)updateToNinePatchNamed:(NSString *)ninePatchName;

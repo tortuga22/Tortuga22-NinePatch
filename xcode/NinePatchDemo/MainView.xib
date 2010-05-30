@@ -90,7 +90,7 @@
 					<object class="IBUISlider" id="221012925">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{18, 30}, {124, 23}}</string>
+						<string key="NSFrame">{{178, 30}, {124, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -105,7 +105,7 @@
 					<object class="IBUISlider" id="360354959">
 						<reference key="NSNextResponder" ref="883825266"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{177, 30}, {124, 23}}</string>
+						<string key="NSFrame">{{18, 30}, {124, 23}}</string>
 						<reference key="NSSuperview" ref="883825266"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -113,8 +113,8 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<float key="IBUIValue">100</float>
-						<float key="IBUIMinValue">100</float>
+						<float key="IBUIValue">40</float>
+						<float key="IBUIMinValue">40</float>
 						<float key="IBUIMaxValue">280</float>
 					</object>
 					<object class="IBUIImageView" id="485290838">
@@ -733,7 +733,6 @@
 						<reference key="object" ref="883825266"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="221012925"/>
 							<reference ref="183681009"/>
 							<reference ref="485290838"/>
 							<reference ref="715618756"/>
@@ -743,7 +742,6 @@
 							<reference ref="340335219"/>
 							<reference ref="80281667"/>
 							<reference ref="807187079"/>
-							<reference ref="360354959"/>
 							<reference ref="629684845"/>
 							<reference ref="583712871"/>
 							<reference ref="891707276"/>
@@ -759,6 +757,8 @@
 							<reference ref="893464849"/>
 							<reference ref="46680779"/>
 							<reference ref="558454645"/>
+							<reference ref="360354959"/>
+							<reference ref="221012925"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>

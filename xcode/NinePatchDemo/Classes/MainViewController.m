@@ -43,6 +43,8 @@
 @synthesize activeNinePatch = _activeNinePatch;
 @synthesize activeBaseImage = _activeBaseImage;
 
+@synthesize usingNGramBackplate = _usingNGramBackplate; 
+
 #pragma mark Status Updating
 -(void)updateToNinePatchNamed:(NSString *)ninePatchName {
 	self.activeNinePatch = [TUNinePatch ninePatchNamed:ninePatchName];
@@ -111,6 +113,14 @@
 
 -(IBAction)changeButtonPushed:(id)sender {
 	// TODO: throw up the picker
+	if (self.usingNGramBackplate) {
+		[self updateToNinePatchNamed:@"testButton"];
+		self.usingNGramBackplate = NO;
+	} else {
+		[self updateToNinePatchNamed:@"amendedNGramBackplate"];
+		self.usingNGramBackplate = YES;
+	}
+
 }
 
 -(IBAction)cmtButtonPushed:(id)sender {
@@ -155,6 +165,12 @@
 	// TODO: set up nine-patch images
 	[self updateToNinePatchNamed:@"testButton"];
 	[self.fullNinePatchView setNinePatchSize:CGSizeMake([self.widthSlider value], [self.heightSlider value])];
+	CGFloat maxWidth = CGRectGetWidth([self.fullNinePatchView bounds]);
+	CGFloat maxHeight = CGRectGetHeight([self.fullNinePatchView bounds]);
+	[self.heightSlider setMaximumValue:maxHeight];
+	[self.widthSlider setMaximumValue:maxWidth];
+	[self.heightSlider setMinimumValue:40.0f];
+	[self.widthSlider setMinimumValue:40.0f];
 }
 
 -(void)viewDidUnload {
