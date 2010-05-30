@@ -11,6 +11,9 @@
 #import "TUNinePatch.h"
 #import "TUNinePatchProtocols.h"
 
+/**
+ Concrete TUNinePatch instance. Handles NinePatches that stretch horizontally and vertically. Only instantiate directly if you know what you're doing.
+ */
 @interface TUFullNinePatch : TUNinePatch < TUNinePatch > {
 	UIImage *_upperEdge;
 	UIImage *_lowerEdge;

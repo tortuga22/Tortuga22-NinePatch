@@ -10,7 +10,9 @@
 #import "TUNinePatchProtocols.h"
 
 void TUImageLog(UIImage *image, NSString *imageName);
-
+/**
+ This category implements all the image-slicing, pixel-tasting, and similar image-manipulation and image-analysis functions. These are only used in methods that'll probably become private real soon now, so maybe a "not much to see here" sign is called for.
+ */
 @interface UIImage (TUNinePatch)
 
 // Black Pixel Searching - Corners

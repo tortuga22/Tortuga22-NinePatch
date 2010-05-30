@@ -14,6 +14,13 @@
  
  This class is included to make it easy to work with NinePatches if (1) all you want are static images (you don't care much about drawing into CGContextRefs) and (2) . Its semantics are probably non-optimal but are very straightforward: it caches every single request you make to it (both NinePatches and the rendered images). If you're only generating a handful of images and/or you're not super memory-constrained you should probably use this class. It has functionality for flushing the cache with various levels of granularity if you need such functionality.
  
+ One thing that's maybe not so obvious is that the methods on this class span two levels of abstraction and caching. Briefly:
+ - an instance of TUCachingNinePatch has a ninePatch property (that is a TUNinePatch-implementing object)
+ - TUCachingNinePatch caches all images it generates
+ - TUNinePatchCache generates and caches instance of TUCachingNinePatch (which in turn cache images)
+ 
+ Where the danger zone emerges is ninePatchNamed: this constructs a TUCachingNinePatch (which as part of its construction constructs an object implementing TUNinePatch), caches the TUCachingNinePatch instance, and returns that instance's ninePatch property (which is what actually implements the TUNinePatch protocol). This is in fact the behavior we wanted when we made this library, but it is a little subtle.
+ 
  */
 @interface TUNinePatchCache : NSObject {
 	NSMutableDictionary *_ninePatchCache;
