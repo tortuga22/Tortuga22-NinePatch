@@ -78,6 +78,7 @@
 
 #pragma mark Getting Images Directly
 -(UIImage *)imageOfSize:(CGSize)size forNinePatchNamed:(NSString *)ninePatchName {
+	NPParameterAssertNotNilIsKindOfClass(ninePatchName,NSString);
 	UIImage *image = nil;
 	TUCachingNinePatch *cachingNinePatch = [self cachingNinePatchNamed:ninePatchName];
 	if (cachingNinePatch) {

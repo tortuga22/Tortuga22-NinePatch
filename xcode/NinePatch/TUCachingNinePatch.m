@@ -9,6 +9,15 @@
 #import "TUNinePatch.h"
 #import "TUNinePatchCachingCategories.h"
 
+@interface TUCachingNinePatch ()
+
+// Synthesized Properties
+@property(nonatomic, retain, readwrite) id < TUNinePatch > ninePatch;
+@property(nonatomic, retain, readwrite) NSMutableDictionary *ninePatchImageCache;
+
+@end
+
+
 @implementation TUCachingNinePatch
 
 #pragma mark Synthesized Properties
@@ -64,15 +73,15 @@
 
 #pragma mark NSCopying
 -(id)copyWithZone:(NSZone *)zone {
-	id < TUNinePatch > copiedNinePatch = [self.ninePatch copyWithZone:zone];
-	TUCachingNinePatch *another = [[[self class] allocWithZone:zone] initWithNinePatch:copiedNinePatch];
-	return another;
+	return [[[self class] alloc] initWithNinePatch:self.ninePatch];
 }
 
 #pragma mark Nib
 -(void)awakeFromNib {
 	[super awakeFromNib];
-	if (!self.ninePatchImageCache) { self.ninePatchImageCache = [NSMutableDictionary dictionaryWithCapacity:5]; };
+	if (!self.ninePatchImageCache) { 
+		self.ninePatchImageCache = [NSMutableDictionary dictionaryWithCapacity:5];
+	};
 }
 
 #pragma mark Cache Management
@@ -96,22 +105,20 @@
 
 #pragma mark Cache Access
 -(void)cacheImage:(UIImage *)image ofSize:(CGSize)size {
-	NSAssert(self.ninePatchImageCache != nil, @"Should never have nil self.ninePatchImageCache.");
-	NSAssert(image != nil, @"This code will checks if the passed-in image is nil, but we're trying to never wind up calling this method for nil images.");
-	if (image) {
-		[self.ninePatchImageCache setObject:image 
-									forSize:size];
-	}
+	NPParameterAssertNotNilIsKindOfClass(image,UIImage);
+	NPAssertPropertyNonNil(self.ninePatchImageCache);
+	return [self.ninePatchImageCache setObject:image 
+									   forSize:size];
 }
 
 -(UIImage *)cachedImageOfSize:(CGSize)size {
 	NPAssertPropertyNonNil(ninePatchImageCache);
-	//NSAssert(self.ninePatchImageCache != nil, @"Should never have nil self.ninePatchImageCache.");
 	return [self.ninePatchImageCache objectForSize:size];
 }
 
 #pragma mark Image Construction
 -(UIImage *)constructImageOfSize:(CGSize)size {
+	NPAssertPropertyNonNil(ninePatch);
 	return (!self.ninePatch)?(nil):([self.ninePatch imageOfSize:size]);
 }
 

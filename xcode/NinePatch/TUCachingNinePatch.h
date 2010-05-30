@@ -15,8 +15,8 @@
 }
 
 // Synthesized Properties
-@property(nonatomic, retain) id < TUNinePatch > ninePatch;
-@property(nonatomic, retain) NSMutableDictionary *ninePatchImageCache;
+@property(nonatomic, retain, readonly) id < TUNinePatch > ninePatch;
+@property(nonatomic, retain, readonly) NSMutableDictionary *ninePatchImageCache;
 
 // Init + Dealloc
 -(id)initWithNinePatchNamed:(NSString *)ninePatchName;

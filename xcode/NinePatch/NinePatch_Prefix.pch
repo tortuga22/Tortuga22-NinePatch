@@ -5,7 +5,25 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 #endif
+/**
+ This struct is used for doing pixel-tasting. We get CoreGraphics to create a bitmap context wherein the memory representation looks like this struct, then we cast the pointer to that memory to be of this struct's type. Pretty self-explanatory.
+ */
+typedef struct _TURGBAPixel {
+	UInt8 red;
+	UInt8 green;
+	UInt8 blue;
+	UInt8 alpha;	
+} TURGBAPixel;
 
+/**
+ Defined here, used as part of the pixel-tasting code. Helps make sure the memory representation of the bitmap context is made up of stuff that looks just like TURGBAPixel.
+ */
+#define TURGBABytesPerPixel (4)
+
+/**
+ This tests if a pixel is black. Here "black" means alpha isn't at zero (AKA: it's at least partially opaque) and r == g == b == 0.
+ */
+#define TURGBAPixelIsBlack(PIXEL) (((PIXEL.red == 0) && (PIXEL.green == 0) && (PIXEL.blue == 0) && (PIXEL.alpha != 0))?(YES):(NO))
 
 #define TUNotFoundRange (NSMakeRange(NSNotFound,0))
 #define TUIsNotFoundRange(RANGE) (NSEqualRanges(RANGE, TUNotFoundRange))
@@ -20,8 +38,8 @@
 
 #define TUWithinEpsilon(EPSILON, X, Y) TUForceYesOrNo((((X-Y) > (-1.0f * EPSILON)) || ((X-Y) < EPSILON)))
 
-#define DEBUG
-#define NP_ASSERTION_CHECKING
+//#define DEBUG
+//#define NP_ASSERTION_CHECKING
 //#define IMAGEDEBUG
 
 // DLog is almost a drop-in replacement for NSLog  

@@ -19,6 +19,8 @@
 		289233A70DB2D0840083E9F9 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A50DB2D0840083E9F9 /* MainView.m */; };
 		289233AE0DB2D0DB0083E9F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233A90DB2D0DB0083E9F9 /* MainViewController.m */; };
 		289233B00DB2D0DB0083E9F9 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */; };
+		325B81D811B1976100B86EA1 /* amendedNGramBackplate.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 325B81D511B1976100B86EA1 /* amendedNGramBackplate.9.png */; };
+		325B81D911B1976100B86EA1 /* amendedNinePatchSolidBorder.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 325B81D611B1976100B86EA1 /* amendedNinePatchSolidBorder.9.png */; };
 		32BB000C10E9856700F57FBC /* testButtonContent.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32BB000A10E9856700F57FBC /* testButtonContent.9.png */; };
 		32BB018E10EAB0BB00F57FBC /* testButton.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 32BB018D10EAB0BB00F57FBC /* testButton.9.png */; };
 		32BB01C510EAB82400F57FBC /* NPContentNinePatchDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BB01C410EAB82400F57FBC /* NPContentNinePatchDemoView.m */; };
@@ -62,6 +64,8 @@
 		289233AC0DB2D0DB0083E9F9 /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipsideViewController.h; path = Classes/FlipsideViewController.h; sourceTree = "<group>"; };
 		289233AD0DB2D0DB0083E9F9 /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipsideViewController.m; path = Classes/FlipsideViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		325B81D511B1976100B86EA1 /* amendedNGramBackplate.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amendedNGramBackplate.9.png; sourceTree = "<group>"; };
+		325B81D611B1976100B86EA1 /* amendedNinePatchSolidBorder.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amendedNinePatchSolidBorder.9.png; sourceTree = "<group>"; };
 		32BB000A10E9856700F57FBC /* testButtonContent.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testButtonContent.9.png; sourceTree = SOURCE_ROOT; };
 		32BB007D10EA5BC700F57FBC /* NDProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDProtocols.h; sourceTree = "<group>"; };
 		32BB018D10EAB0BB00F57FBC /* testButton.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testButton.9.png; sourceTree = SOURCE_ROOT; };
@@ -158,6 +162,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				325B81D511B1976100B86EA1 /* amendedNGramBackplate.9.png */,
+				325B81D611B1976100B86EA1 /* amendedNinePatchSolidBorder.9.png */,
 				32BB018D10EAB0BB00F57FBC /* testButton.9.png */,
 				32BB000A10E9856700F57FBC /* testButtonContent.9.png */,
 				280E754A0DD40C5E005A515E /* FlipsideView.xib */,
@@ -268,6 +274,8 @@
 				280E754F0DD40C5E005A515E /* MainWindow.xib in Resources */,
 				32BB000C10E9856700F57FBC /* testButtonContent.9.png in Resources */,
 				32BB018E10EAB0BB00F57FBC /* testButton.9.png in Resources */,
+				325B81D811B1976100B86EA1 /* amendedNGramBackplate.9.png in Resources */,
+				325B81D911B1976100B86EA1 /* amendedNinePatchSolidBorder.9.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
