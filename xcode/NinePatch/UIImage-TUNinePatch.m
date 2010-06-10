@@ -192,8 +192,17 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 													 bytesPerRow,
 													 colorSpace,
 													 kCGImageAlphaPremultipliedLast);
+
+		// NEW: seeing nondetermnistic errors where sometimes the image is parsed right
+		// and sometimes not parsed right. The followthing three lines paint the context
+		// to solid white, then paste the image over it, so this ought to normalize the
+		// outcome a bit more.
+		CGRect contextBounds = CGRectMake(0.0f, 0.0f, width, height);
+		CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+		CGContextFillRect(context, contextBounds);
 		
-		CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), cgImage);
+		// Having normalized the context we now paint the image
+		CGContextDrawImage(context, contextBounds, cgImage);
 		TURGBAPixel *pixelData = (TURGBAPixel *) CGBitmapContextGetData(context);
 		if (pixelData) {
 			// CF note in the AsHorizontal method below
@@ -256,7 +265,16 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 													 colorSpace,
 													 kCGImageAlphaPremultipliedLast);
 		
-		CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), cgImage);
+		// NEW: seeing nondetermnistic errors where sometimes the image is parsed right
+		// and sometimes not parsed right. The followthing three lines paint the context
+		// to solid white, then paste the image over it, so this ought to normalize the
+		// outcome a bit more.
+		CGRect contextBounds = CGRectMake(0.0f, 0.0f, width, height);
+		CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+		CGContextFillRect(context, contextBounds);
+		
+		// Having normalized the context we now paint the image		
+		CGContextDrawImage(context, contextBounds, cgImage);
 		TURGBAPixel *pixelData = (TURGBAPixel *) CGBitmapContextGetData(context);
 		if (pixelData) {
 			// The for loop below is walking the strip from both ends.

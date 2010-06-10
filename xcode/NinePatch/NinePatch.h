@@ -12,3 +12,4 @@
 #import "TUNinePatchProtocols.h"
 #import "TUNinePatch.h"
 #import "TUNinePatchCache.h"
+#import "TUDebugLoggingAssistant.h"
