@@ -113,7 +113,6 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 													 colorSpace,
 													 kCGImageAlphaPremultipliedLast);
 		
-		
 		CGContextDrawImage(context, CGRectMake(0.0f,0.0f,1.0f,1.0f), cgImage);
 		TURGBAPixel *pixelData = (TURGBAPixel *) CGBitmapContextGetData(context);
 		if (pixelData) {
@@ -217,7 +216,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 			
 			if ((firstBlackPixel != NSNotFound) && (lastBlackPixel != NSNotFound)) {
 				NPAssert(lastBlackPixel >= firstBlackPixel, ([NSString stringWithFormat:@"Got firstBlackPixel:'%d' and lastBlackPixel:'%d'.",firstBlackPixel,lastBlackPixel]));
-				blackPixelRangeAsVerticalStrip.location = TUTruncateWithin(firstBlackPixel, 0, height - 1);
+				blackPixelRangeAsVerticalStrip.location = TUTruncateWithin(firstBlackPixel, 0, height - 1) / self.scale;
 				// We can't just use TUTruncateAtZero on lastBlackPixel - firstBlackPixel here.
 				// The semantics of pixel coordinates are such that a zero difference between lastBlackPixel and firstBlackPixel is ok
 				// but < 0 is obv. very bad.
@@ -230,7 +229,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 				} else {
 					length = 0;
 				}
-				blackPixelRangeAsVerticalStrip.length = length;
+				blackPixelRangeAsVerticalStrip.length = length/self.scale;
 			}
 		}
 		CGContextRelease(context);
@@ -330,7 +329,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 			
 			if ((firstBlackPixel != NSNotFound) && (lastBlackPixel != NSNotFound)) {
 				NPAssert(lastBlackPixel >= firstBlackPixel, ([NSString stringWithFormat:@"Got firstBlackPixel:'%d' and lastBlackPixel:'%d'.",firstBlackPixel,lastBlackPixel]));
-				blackPixelRangeAsHorizontalStrip.location = TUTruncateWithin(firstBlackPixel, 0, width - 1);
+				blackPixelRangeAsHorizontalStrip.location = TUTruncateWithin(firstBlackPixel, 0, width - 1) / self.scale;
 				// We can't just use TUTruncateAtZero on lastBlackPixel - firstBlackPixel here.
 				// The semantics of pixel coordinates are such that a zero difference between lastBlackPixel and firstBlackPixel is ok
 				// but < 0 is obv. very bad.
@@ -343,7 +342,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 				} else {
 					length = 0;
 				}
-				blackPixelRangeAsHorizontalStrip.length = length;
+				blackPixelRangeAsHorizontalStrip.length = length / self.scale;
 			}
 		}
 		CGContextRelease(context);
@@ -356,19 +355,19 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 
 #pragma mark Corners - Rects
 -(CGRect)upperLeftCornerRect {
-	return CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+	return CGRectMake(0.0f, 0.0f, 1.0f/self.scale, 1.0f/self.scale);
 }
 
 -(CGRect)lowerLeftCornerRect {
-	return CGRectMake(0.0f, [self size].height - 1.0f, 1.0f, 1.0f);
+	return CGRectMake(0.0f, [self size].height - (1.0f/self.scale), 1.0f/self.scale, 1.0f/self.scale);
 }
 
 -(CGRect)upperRightCornerRect {
-	return CGRectMake([self size].width - 1.0f, 0.0f, 1.0f, 1.0f);
+	return CGRectMake([self size].width - (1.0f/self.scale), 0.0f,  1.0f/self.scale, 1.0f/self.scale);
 }
 
 -(CGRect)lowerRightCornerRect {
-	return CGRectMake([self size].width - 1.0f, [self size].height - 1.0f, 1.0f, 1.0f);
+	return CGRectMake([self size].width - 1.0f, [self size].height - (1.0f/self.scale),  1.0f/self.scale, 1.0f/self.scale);
 }
 
 #pragma mark Corners - Slicing
@@ -391,26 +390,26 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 #pragma mark Strips - Sizing
 -(CGRect)upperStripRect {
 	CGSize selfSize = [self size];
-	CGFloat stripWidth = TUTruncateAtZero(selfSize.width - 2.0f);
-	return CGRectMake(1.0f, 0.0f, stripWidth, 1.0f);
+	CGFloat stripWidth = TUTruncateAtZero(selfSize.width - (2.0f/self.scale));
+	return CGRectMake((1.0f/self.scale), 0.0f, stripWidth, 1.0f/self.scale);
 }
 
 -(CGRect)lowerStripRect {
 	CGSize selfSize = [self size];
-	CGFloat stripWidth = TUTruncateAtZero(selfSize.width - 2.0f);
-	return CGRectMake(1.0f, selfSize.height -1.0f, stripWidth, 1.0f);
+	CGFloat stripWidth = TUTruncateAtZero(selfSize.width - (2.0f/self.scale));
+	return CGRectMake(1.0f/self.scale, selfSize.height - (1.0f/self.scale), stripWidth, 1.0f/self.scale);
 }
 
 -(CGRect)leftStripRect {
 	CGSize selfSize = [self size];
-	CGFloat stripHeight = TUTruncateAtZero(selfSize.height - 2.0f);
-	return CGRectMake(0.0f, 1.0f, 1.0f, stripHeight);	
+	CGFloat stripHeight = TUTruncateAtZero(selfSize.height - (2.0f/self.scale));
+	return CGRectMake(0.0f, 1.0f/self.scale, 1.0f/self.scale, stripHeight);	
 }
 
 -(CGRect)rightStripRect {
 	CGSize selfSize = [self size];
-	CGFloat stripHeight = TUTruncateAtZero(selfSize.height - 2.0f);
-	return CGRectMake(selfSize.width - 1.0f, 1.0f, 1.0f, stripHeight);
+	CGFloat stripHeight = TUTruncateAtZero(selfSize.height - (2.0f/self.scale));
+	return CGRectMake(selfSize.width - (1.0f/self.scale), 1.0f/self.scale, 1.0f/self.scale, stripHeight);
 }
 
 #pragma mark Strips - Slicing
@@ -435,9 +434,13 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	UIImage *subImage = nil;
 	CGImageRef cir = [self CGImage];
 	if (cir) {
+		rect.origin.x *= self.scale;
+		rect.origin.y *= self.scale;
+		rect.size.width *= self.scale;
+		rect.size.height *= self.scale;
 		CGImageRef subCGImage = CGImageCreateWithImageInRect(cir, rect);
 		if (subCGImage) {
-			subImage = [UIImage imageWithCGImage:subCGImage];
+			subImage = [UIImage imageWithCGImage:subCGImage scale:self.scale orientation:self.imageOrientation];
 			CGImageRelease(subCGImage);
 			NPAssertNilOrIsKindOfClass(subImage,UIImage);
 			NPAssert((CGSizeEqualToSize([subImage size], rect.size)), @"Shouldn't get unequal subimage and requested sizes.");
@@ -457,10 +460,10 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 #pragma mark Nine-Patch Content Extraction
 -(UIImage *)imageAsNinePatchImage {
 	UIImage *imageOfNinePatchImage = nil;
-	CGFloat width = [self size].width - 2.0f;
-	CGFloat height = [self size].height - 2.0f;
+	CGFloat width = [self size].width - (2.0f/self.scale);
+	CGFloat height = [self size].height - (2.0f/self.scale);
 	if (width > 0.0f && height > 0.0f) {
-		imageOfNinePatchImage = [self subImageInRect:CGRectMake(1.0f, 1.0f, width, height)];
+		imageOfNinePatchImage = [self subImageInRect:CGRectMake((1.0f/self.scale), (1.0f/self.scale), width, height)];
 	}
 	NPOOutputLog(imageOfNinePatchImage);
 	return imageOfNinePatchImage;
