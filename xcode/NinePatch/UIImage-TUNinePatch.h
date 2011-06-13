@@ -25,14 +25,14 @@ void TUImageLog(UIImage *image, NSString *imageName);
 -(BOOL)isBlackPixel;
 
 // Black Pixel Searching - Strips
--(NSRange)blackPixelRangeInUpperStrip;
--(NSRange)blackPixelRangeInLowerStrip;
--(NSRange)blackPixelRangeInLeftStrip;
--(NSRange)blackPixelRangeInRightStrip;
+-(TURange)blackPixelRangeInUpperStrip;
+-(TURange)blackPixelRangeInLowerStrip;
+-(TURange)blackPixelRangeInLeftStrip;
+-(TURange)blackPixelRangeInRightStrip;
 
 // Pixel Tasting - Strips
--(NSRange)blackPixelRangeAsVerticalStrip;
--(NSRange)blackPixelRangeAsHorizontalStrip;
+-(TURange)blackPixelRangeAsVerticalStrip;
+-(TURange)blackPixelRangeAsHorizontalStrip;
 
 // Corners - Rects
 -(CGRect)upperLeftCornerRect;

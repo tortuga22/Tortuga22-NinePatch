@@ -127,8 +127,8 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 }
 
 #pragma mark Black Pixel Searching - Strips
--(NSRange)blackPixelRangeInUpperStrip {
-	NSRange blackPixelRangeInUpperStrip = TUNotFoundRange;
+-(TURange)blackPixelRangeInUpperStrip {
+	TURange blackPixelRangeInUpperStrip = TUNotFoundRange;
 	UIImage *upperStrip = [self upperStrip];
 	if (upperStrip) {
 		blackPixelRangeInUpperStrip = [upperStrip blackPixelRangeAsHorizontalStrip];
@@ -137,8 +137,8 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	return blackPixelRangeInUpperStrip;
 }
 
--(NSRange)blackPixelRangeInLowerStrip {
-	NSRange blackPixelRangeInLowerStrip = TUNotFoundRange;
+-(TURange)blackPixelRangeInLowerStrip {
+	TURange blackPixelRangeInLowerStrip = TUNotFoundRange;
 	UIImage *lowerStrip = [self lowerStrip];
 	if (lowerStrip) {
 		blackPixelRangeInLowerStrip = [lowerStrip blackPixelRangeAsHorizontalStrip];
@@ -147,8 +147,8 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	return blackPixelRangeInLowerStrip;
 }
 
--(NSRange)blackPixelRangeInLeftStrip {
-	NSRange blackPixelRangeInLeftStrip = TUNotFoundRange;
+-(TURange)blackPixelRangeInLeftStrip {
+	TURange blackPixelRangeInLeftStrip = TUNotFoundRange;
 	UIImage *leftStrip = [self leftStrip];
 	if (leftStrip) {
 		blackPixelRangeInLeftStrip = [leftStrip blackPixelRangeAsVerticalStrip];
@@ -157,8 +157,8 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	return blackPixelRangeInLeftStrip;
 }
 
--(NSRange)blackPixelRangeInRightStrip {
-	NSRange blackPixelRangeInRightStrip = TUNotFoundRange;
+-(TURange)blackPixelRangeInRightStrip {
+	TURange blackPixelRangeInRightStrip = TUNotFoundRange;
 	UIImage *rightStrip = [self rightStrip];
 	if (rightStrip) {
 		blackPixelRangeInRightStrip = [rightStrip blackPixelRangeAsVerticalStrip];
@@ -168,9 +168,9 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 }
 
 #pragma mark Pixel Tasting - Strips
--(NSRange)blackPixelRangeAsVerticalStrip {
+-(TURange)blackPixelRangeAsVerticalStrip {
 	NPAssert([self size].width == 1.0f, @"This method assumes the image has width == 1.0f");
-	NSRange blackPixelRangeAsVerticalStrip = TUNotFoundRange;
+	TURange blackPixelRangeAsVerticalStrip = TUNotFoundRange;
 	NSUInteger firstBlackPixel = NSNotFound;
 	NSUInteger lastBlackPixel = NSNotFound;
 	if ([self size].height > 0.0f) {
@@ -240,9 +240,9 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	return blackPixelRangeAsVerticalStrip;		
 }
 
--(NSRange)blackPixelRangeAsHorizontalStrip {
+-(TURange)blackPixelRangeAsHorizontalStrip {
 	NPAssert([self size].height == 1.0f, @"This method assumes the image has height == 1.0f");
-	NSRange blackPixelRangeAsHorizontalStrip = TUNotFoundRange;
+	TURange blackPixelRangeAsHorizontalStrip = TUNotFoundRange;
 	NSUInteger firstBlackPixel = NSNotFound;
 	NSUInteger lastBlackPixel = NSNotFound;
 	if ([self size].width > 0.0f) {
