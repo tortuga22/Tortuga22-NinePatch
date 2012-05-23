@@ -124,8 +124,7 @@ if (E && [[E name] isEqualToString:NSInternalInconsistencyException]) { \
 
 #define NPOBJCStringOfToken(TOKEN) PASSTHROUGH(PASTE( PASSTHROUGH(@), PASSTHROUGH(STRINGIFY(TOKEN))))
 
-#define NPSelfProperty(PROP) (self.PROP)
-//#define NPSelfProperty(PROP) ([self PROP])
+#define NPSelfProperty(PROP) ([self PROP])
 
 #define NPAssertPropertyNonNil(PROP) NPAssert((NPSelfProperty(PROP) != nil), ([NSString stringWithFormat:@"self.%s should never be nil.",( (#PROP) )]))
 
