@@ -112,7 +112,7 @@
 		NSMutableArray *workingArray = [NSMutableArray arrayWithObject:loggingTag];
 		va_start(argumentList, loggingTag);
 		@try {
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				@try {
 					[workingArray addObject:eachObject];
 				}
@@ -147,7 +147,7 @@
 		NSMutableArray *workingArray = [NSMutableArray arrayWithObject:loggingTag];
 		va_start(argumentList, loggingTag);
 		@try {
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				@try {
 					[workingArray addObject:eachObject];
 				}
@@ -276,7 +276,7 @@
 		NSMutableArray *workingArray = [NSMutableArray arrayWithObject:loggingTag];
 		va_start(argumentList, loggingTag);
 		@try {
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				@try {
 					[workingArray addObject:eachObject];
 				}
@@ -311,7 +311,7 @@
 		NSMutableArray *workingArray = [NSMutableArray arrayWithObject:loggingTag];
 		va_start(argumentList, loggingTag);
 		@try {
-			while (eachObject = va_arg(argumentList, id)) {
+			while ((eachObject = va_arg(argumentList, id))) {
 				@try {
 					[workingArray addObject:eachObject];
 				}
