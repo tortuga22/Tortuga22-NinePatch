@@ -223,7 +223,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 				// Thus 1 + TUTruncateAtZero(lastBlackPixel - firstBlackPixel) won't work.
 				// and fixing the expression s.t. it does work is more complicated than
 				// just breaking it down like so.
-				NSUInteger length = lastBlackPixel - firstBlackPixel;
+				NSInteger length = lastBlackPixel - firstBlackPixel;
 				if (length >= 0) {
 					length += 1;
 				} else {
@@ -336,7 +336,7 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 				// Thus 1 + TUTruncateAtZero(lastBlackPixel - firstBlackPixel) won't work.
 				// and fixing the expression s.t. it does work is more complicated than
 				// just breaking it down like so.
-				NSUInteger length = lastBlackPixel - firstBlackPixel;
+				NSInteger length = lastBlackPixel - firstBlackPixel;
 				if (length >= 0) {
 					length += 1;
 				} else {
