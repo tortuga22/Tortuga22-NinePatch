@@ -25,9 +25,6 @@ typedef struct _TURGBAPixel {
  */
 #define TURGBAPixelIsBlack(PIXEL) (((PIXEL.red == 0) && (PIXEL.green == 0) && (PIXEL.blue == 0) && (PIXEL.alpha != 0))?(YES):(NO))
 
-#define TUNotFoundRange (NSMakeRange(NSNotFound,0))
-#define TUIsNotFoundRange(RANGE) (NSEqualRanges(RANGE, TUNotFoundRange))
-
 #define TUTruncateBelow(VALUE, FLOOR) ((( VALUE ) < ( FLOOR ))?(( FLOOR )):(( VALUE )))
 #define TUTruncateAbove(VALUE, CEILING) ((( VALUE ) > ( CEILING ))?(( CEILING )):(( VALUE )))
 #define TUTruncateWithin(VALUE, FLOOR, CEILING) ((( VALUE ) < ( FLOOR ))?(( FLOOR )):((( VALUE ) > ( CEILING ))?(( CEILING )):(( VALUE ))))
@@ -127,8 +124,7 @@ if (E && [[E name] isEqualToString:NSInternalInconsistencyException]) { \
 
 #define NPOBJCStringOfToken(TOKEN) PASSTHROUGH(PASTE( PASSTHROUGH(@), PASSTHROUGH(STRINGIFY(TOKEN))))
 
-#define NPSelfProperty(PROP) (self.PROP)
-//#define NPSelfProperty(PROP) ([self PROP])
+#define NPSelfProperty(PROP) ([self PROP])
 
 #define NPAssertPropertyNonNil(PROP) NPAssert((NPSelfProperty(PROP) != nil), ([NSString stringWithFormat:@"self.%s should never be nil.",( (#PROP) )]))
 

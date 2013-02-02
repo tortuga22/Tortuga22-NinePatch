@@ -75,7 +75,7 @@
 +(id < TUNinePatch >)ninePatchNamed:(NSString *)filename;
 
 // Nine Patch Image Manipulation - High Level
-+(CGRect)rectFromHorizontalRange:(NSRange)horizontalRange verticalRange:(NSRange)verticalRange;
++(CGRect)rectFromHorizontalRange:(TURange)horizontalRange verticalRange:(TURange)verticalRange;
 +(CGRect)stretchableRegionOfNinePatchImage:(UIImage *)ninePatchImage;
 +(CGRect)contentRegionOfNinePatchImage:(UIImage *)ninePatchImage;
 +(BOOL)shouldTileCenterHorizontallyForNinePatchImage:(UIImage *)ninePatchImage;

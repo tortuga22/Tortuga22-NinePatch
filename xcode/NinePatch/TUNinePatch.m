@@ -284,7 +284,7 @@
 }
 
 #pragma mark Nine Patch Image Manipulation - High Level
-+(CGRect)rectFromHorizontalRange:(NSRange)horizontalRange verticalRange:(NSRange)verticalRange {
++(CGRect)rectFromHorizontalRange:(TURange)horizontalRange verticalRange:(TURange)verticalRange {
 	NPAInputLog(@"rectFromHorizontalRange:'%@' verticalRange:'%@'",NSStringFromRange(horizontalRange),NSStringFromRange(verticalRange));
 	CGFloat minX = (TUIsNotFoundRange(horizontalRange))?(0.0f):((CGFloat) horizontalRange.location);
 	CGFloat width = (TUIsNotFoundRange(horizontalRange))?(0.0f):((CGFloat) horizontalRange.length);
@@ -427,8 +427,8 @@
 #pragma mark TUNinePatch Protocol Methods - Image Construction
 -(UIImage *)imageOfSize:(CGSize)size {
 	UIImage *image = nil;
-	UIGraphicsBeginImageContext(size);
-	[self drawInRect:CGRectMake(0.0f,0.0f,size.width,size.height)];
+	UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+	[self drawInRect:CGRectMake(0.0f,0.0f,size.width, size.height)];
 	image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
 	return image;

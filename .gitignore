@@ -8,6 +8,7 @@
 *.perspective
 *.perspectivev3
 *.pbxuser
+xcuserdata/
 
 
 # Generated files

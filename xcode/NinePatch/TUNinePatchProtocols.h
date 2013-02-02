@@ -8,6 +8,23 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 
+typedef struct {
+    float location;
+    float length;
+} TURange;
+
+#define TUEqualRanges(RANGE1, RANGE2) (RANGE1.location == RANGE2.location && RANGE1.length == RANGE2.length) 
+
+static __inline__ TURange TURangeMake(float location_, float length_) {
+    TURange range;
+    range.location = location_;
+    range.length = length_;
+    return range;
+}
+
+#define TUNotFoundRange (TURangeMake(NSNotFound,0))
+#define TUIsNotFoundRange(RANGE) (TUEqualRanges(RANGE, TUNotFoundRange))
+
 /**
  
  Defines the methods shared by all concrete NinePatch classes. Expect many of these methods to be removed from the 
