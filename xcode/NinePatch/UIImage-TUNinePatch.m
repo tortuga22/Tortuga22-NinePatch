@@ -434,10 +434,10 @@ void TUImageLog(UIImage *image, NSString *imageName) {
 	UIImage *subImage = nil;
 	CGImageRef cir = [self CGImage];
 	if (cir) {
-		rect.origin.x *= self.scale;
-		rect.origin.y *= self.scale;
-		rect.size.width *= self.scale;
-		rect.size.height *= self.scale;
+		rect.origin.x = round(rect.origin.x * self.scale);
+		rect.origin.y = round(rect.origin.y * self.scale);
+		rect.size.width = round(rect.size.width * self.scale);
+		rect.size.height = round(rect.size.height * self.scale);
 		CGImageRef subCGImage = CGImageCreateWithImageInRect(cir, rect);
 		if (subCGImage) {
 			subImage = [UIImage imageWithCGImage:subCGImage scale:self.scale orientation:self.imageOrientation];
